@@ -6,6 +6,6 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get --yes install certb
 COPY default.conf /etc/nginx/conf.d/
 COPY logrotate /etc/logrotate
 
-WORKDIR /mnt/store/melpa
+WORKDIR /mnt/store
 
 #CMD docker/nginx/run.sh

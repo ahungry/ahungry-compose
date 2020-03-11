@@ -1,9 +1,9 @@
 # docker service create --name registry --publish 127.0.0.1:5000:5000 registry:2
-version: "3"
+version: "2.4"
 services:
   nginx:
     build: ./nginx
-    image: melpa/nginx:v1
+    image: ahu/nginx:v1
     restart: unless-stopped
     volumes:
       - ./store/letsencrypt:/etc/letsencrypt
@@ -37,7 +37,9 @@ services:
     build: ./deps/com.ahungry.comments
     image: ahu/com.ahungry.comments:v1
     restart: unless-stopped
+    mem_limit: 256m
+    mem_reservation: 128m
     volumes:
-      - ./store/com.ahungry.comments:/home/dummy/.local
+      - ./user-store/com.ahungry.comments:/home/dummy/.local
     ports:
-      - "3000:3000"
+      - "3001:3001"

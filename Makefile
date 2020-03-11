@@ -9,8 +9,10 @@ deps/com.ahungry: deps
 deps/com.ahungry.comments: deps
 	git clone git@github.com:ahungry/com.ahungry.comments.git $@
 
+user-store:
+	mkdir -p user-store/com.ahungry.comments/share
+	mkdir -p user-store/com.ahungry.comments/bin
+
 store:
 	mkdir -p store/letsencrypt
 	mkdir -p store/log
-	mkdir -p store/com.ahungry.comments/share
-	mkdir -p store/com.ahungry.comments/bin
