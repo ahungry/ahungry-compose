@@ -12,18 +12,32 @@ services:
       - "80:80"
       - "443:443"
 
+  mariadb:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ahungry
+    ports: []
+      #- "3306:3306"
+
   com.ahungry:
     build: ./deps/com.ahungry
     image: ahu/com.ahungry:v1
     restart: unless-stopped
-    volumes: ~
+    volumes: []
+    environment:
+      MYSQL_AHUNGRY_HOST: mariadb
+      MYSQL_AHUNGRY_USERNAME: ahungry
+      MYSQL_AHUNGRY_PASSWORD: ahungry
     ports:
       - "5000:5000"
 
   com.ahungry.comments:
+    user: "1000"
     build: ./deps/com.ahungry.comments
     image: ahu/com.ahungry.comments:v1
     restart: unless-stopped
-    volumes: ~
+    volumes:
+      - ./store/com.ahungry.comments:/home/dummy/.local
     ports:
       - "3000:3000"

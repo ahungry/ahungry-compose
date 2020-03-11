@@ -8,4 +8,4 @@ COPY logrotate /etc/logrotate
 
 WORKDIR /mnt/store/melpa
 
-CMD docker/nginx/run.sh
+#CMD docker/nginx/run.sh
