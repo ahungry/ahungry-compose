@@ -20,6 +20,12 @@ services:
     ports: []
       #- "3306:3306"
 
+  mariadb-data:
+    build: ./mariadb-data
+    image: ahu/mariadb-data:v1
+    depends_on:
+      - mariadb
+
   com.ahungry:
     build: ./deps/com.ahungry
     image: ahu/com.ahungry:v1
@@ -27,10 +33,12 @@ services:
     volumes: []
     environment:
       MYSQL_AHUNGRY_HOST: mariadb
-      MYSQL_AHUNGRY_USERNAME: ahungry
+      MYSQL_AHUNGRY_USERNAME: root
       MYSQL_AHUNGRY_PASSWORD: ahungry
     ports:
       - "5000:5000"
+    depends_on:
+      - mariadb-data
 
   com.ahungry.comments:
     user: "1000"
