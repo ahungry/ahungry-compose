@@ -17,7 +17,8 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: ahungry
-    volumes: []
+    volumes:
+      - ./mysql:/etc/mysql
     ports:
       - "3306:3306"
 
