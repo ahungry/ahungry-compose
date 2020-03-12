@@ -33,16 +33,18 @@ services:
   com.ahungry:
     build: ./deps/com.ahungry
     image: ahu/com.ahungry:v1
-    restart: unless-stopped
+    security_opt:
+      - seccomp:unconfined
+    #restart: unless-stopped
     volumes: []
     environment:
       MYSQL_AHUNGRY_HOST: mariadb
       MYSQL_AHUNGRY_USERNAME: root
       MYSQL_AHUNGRY_PASSWORD: ahungry
     ports:
-      - "5000:5000"
+      - "5001:80"
     depends_on:
-      - mariadb-data
+     - mariadb-data
 
   com.ahungry.comments:
     user: "1000"
