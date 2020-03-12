@@ -17,12 +17,15 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: ahungry
-    ports: []
-      #- "3306:3306"
+    volumes: []
+    ports:
+      - "3306:3306"
 
   mariadb-data:
     build: ./mariadb-data
     image: ahu/mariadb-data:v1
+    volumes:
+      - ./store/mariadb-data:/mnt/store/mariadb-data
     depends_on:
       - mariadb
 

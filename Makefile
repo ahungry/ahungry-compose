@@ -16,5 +16,6 @@ user-store:
 store:
 	mkdir -p store/letsencrypt
 	mkdir -p store/log
+	mkdir -p store/mariadb-data
 
 .PHONY: user-store store
