@@ -33,6 +33,10 @@ services:
   com.ahungry:
     build: ./deps/com.ahungry
     image: ahu/com.ahungry:v1
+    # Required for sbcl to not exit immediately (same as -i option)
+    stdin_open: true
+    # Not required, but good to know (same as -t option)
+    #tty: true
     security_opt:
       - seccomp:unconfined
     #restart: unless-stopped
